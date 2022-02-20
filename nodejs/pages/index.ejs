@@ -9,9 +9,9 @@
 <body>
     <%- include('includes/nav') %>
     <% if(data){ %>
-        <% for(dta of data) { %>
+        <% for(user of data) { %>
             <h1>
-                <%= dta %>
+                <%= user.email %>
             </h1>
         <% } %>
     <% } else { %>
