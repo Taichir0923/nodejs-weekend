@@ -15,7 +15,7 @@ app.get('/' , (req, res) => {
         if(!err){
             const users = JSON.parse(data);
             res.render('index' , {
-                data: users
+                data: users 
             })
         } else {
             res.end('aldaa garlaa')
@@ -42,6 +42,24 @@ app.post('/get-form-data' , (req, res) => {
     const user = new User(username, email , password);
     user.save();
     res.redirect('/register')
+});
+
+app.get('/login' , (req , res) => {
+    res.render('login')
+})
+
+app.post('/login' , (req, res) => {
+    const {email , password} = req.body;
+    const result = User.findByEmail(email);
+    if(!result){
+        res.redirect('/login')
+    } else {
+        if(result.password === password){
+            res.redirect('/')
+        } else {
+            res.redirect('/login')
+        }
+    }
 })
 
 app.listen(3000 , () => {

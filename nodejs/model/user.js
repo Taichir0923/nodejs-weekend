@@ -20,6 +20,16 @@ module.exports = class User {
             })
         })
     }
+
+    static findByEmail(email){
+        const data = fs.readFileSync(pth , 'utf-8');
+        const users = JSON.parse(data);
+        const user = users.find(usr => usr.email === email);
+        if(!user){
+            return "Email esvel nuuts ug buruu bna"
+        }
+         return user;
+    }
 }
 
 // __dirname ./
