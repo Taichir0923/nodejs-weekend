@@ -77,3 +77,10 @@ app.listen(3000 , () => {
 // request => body
 
 // body-parser => hereglegchees data avahad heregleh package
+
+// hereglegchiin data ustgah
+// update hiih
+
+
+// query parameter
+// req.params
