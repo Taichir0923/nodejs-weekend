@@ -34,3 +34,19 @@ module.exports = class User {
 
 // __dirname ./
 
+// Schemaless
+
+// 1. gert shine database uusgeh
+// 2. 5 collection uusgene
+// 3. collection tus burd 5 data hadgalah
+// 4. logical operator bolon comparision operator ashiglan filter hiih
+
+// $set
+// $eq
+// $neq
+
+// relational database
+
+// users: [{id: 23} , {} , {}]
+
+// comments [{} , {} , {userId: 23}]
