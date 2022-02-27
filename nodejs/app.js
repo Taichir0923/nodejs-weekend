@@ -11,7 +11,7 @@ app.set('views' , 'pages');
 app.use(bp.urlencoded({extended: false}));
 
 app.get('/' , (req, res) => {
-    fs.readFile(path.join(__dirname , '/data' , '/users.json') , 'utf-8' , (err , data) => {
+    fs.readFile(path.join(__dirname , '/data' , '/download.json') , 'utf-8' , (err , data) => {
         if(!err){
             const users = JSON.parse(data);
             res.render('index' , {
