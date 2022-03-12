@@ -5,19 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     
-
+    <div class="container"></div>
     <script>
-        fetch('http://localhost:3000/get-users' , {
-            method: 'get'
-        })
+        const container = document.querySelector(".container");
+        init();
+        function init(){
+            fetch('http://localhost:3000/get-users' , {
+                method: 'get'
+            })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+                container.innerHTML = '';
+                result.forEach(user => {
+                    container.insertAdjacentHTML('afterbegin' , `
+                        <div class='item'>
+                            <h1>${user.firstname} ${user.lastname}</h1>
+                            <input disabled hidden value=${user._id} />
+                            <button id="delete--btn">ustgah</button> 
+                        </div>
+                    `)
+                })
+            })
+        }
 
 
-        // fetch(url , {headers , method})
+        async function deleteUserReq(id){
+            const {data} = await axios.delete('http://localhost:3000/delete-user/' + id);
+            if(data){
+                console.log(data);
+                init();
+            }
+        }
+
+        document.addEventListener('click' , e => {
+            if(e.target.id === "delete--btn"){
+                const userId = e.target.previousElementSibling.value;
+                deleteUserReq(userId);
+            }
+        })
     </script>
 </body>
 </html>

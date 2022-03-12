@@ -5,6 +5,8 @@ class UserController {
         const lastname = req.body.lastname;
         const number = req.body.number;
 
+        console.log(req.body);
+
         const user = new User({
             firstname: firstname,
             lastname: lastname,

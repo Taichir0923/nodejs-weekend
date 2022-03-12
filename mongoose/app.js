@@ -25,3 +25,5 @@ mongoose.connect("mongodb://localhost:27017/restapi" , () => {
 
 // 1. medeenii CRUD endpoint uusgeh
 // 2. hereglegchiin login endpoint uusgeh
+
+// 
