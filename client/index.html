@@ -26,6 +26,7 @@
                             <h1>${user.firstname} ${user.lastname}</h1>
                             <input disabled hidden value=${user._id} />
                             <button id="delete--btn">ustgah</button> 
+                            <button id="edit--btn">zasah</button> 
                         </div>
                     `)
                 })
@@ -45,6 +46,12 @@
             if(e.target.id === "delete--btn"){
                 const userId = e.target.previousElementSibling.value;
                 deleteUserReq(userId);
+            }
+
+            if(e.target.id === "edit--btn"){
+                const userId = e.target.previousElementSibling.previousElementSibling.value;
+                localStorage.setItem("userId" , userId);
+                location.pathname = '/update.html'
             }
         })
     </script>
