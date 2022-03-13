@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <form id="form">
+        <input type="text" placeholder="firstname" id="firstname">
+        <input type="text" placeholder="lastname" id="lastname">
+        <input type="text" placeholder="number" id="number">
+        <input type="submit" value="burtgeh">
+    </form>
+
+    <script>
+        const form = document.querySelector('#form');
+        const firstname = document.querySelector('#firstname');
+        const lastname = document.querySelector('#lastname');
+        const number = document.querySelector('#number');
+        async function init(){
+            const {data} = await axios.get('http://localhost:3000/get-single-user/' + localStorage.userId);
+            if(data){
+                firstname.value = data.firstname;
+                lastname.value = data.lastname;
+                number.value = data.number;
+            }
+        }
+        init();
+
+
+        form.addEventListener('submit' , async e => {
+            e.preventDefault();
+            const formData = {
+                firstname: firstname.value,
+                lastname: lastname.value,
+                number: number.value,
+            }
+            const {data} = await axios.put('http://localhost:3000/update-user/' + localStorage.userId , formData);
+            if(data){
+                location.pathname = '/index.html';
+            }
+        })
+    </script>
+</body>
+</html>
