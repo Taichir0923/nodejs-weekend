@@ -6,11 +6,13 @@ const cors = require('cors');
 
 // routes
 const userRoutes = require('./route/user');
+const newsRoutes = require('./route/news');
 
 app.use(cors());
 app.use(bp.json());
 
 app.use(userRoutes);
+app.use(newsRoutes);
 
 mongoose.connect("mongodb://localhost:27017/restapi" , () => {
     app.listen(3000 , () => {
@@ -26,4 +28,5 @@ mongoose.connect("mongodb://localhost:27017/restapi" , () => {
 // 1. medeenii CRUD endpoint uusgeh
 // 2. hereglegchiin login endpoint uusgeh
 
+// 
 // 
