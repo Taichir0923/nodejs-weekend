@@ -28,7 +28,14 @@ class NewsController {
             News.findById(id)
                 .lean()
                 .populate('publishedBy' , "firstname lastname")
-                .populate('comments')
+                .populate({
+                    path: 'comments',
+                    populate: {
+                        path: 'writtenBy',
+                        model: 'users',
+                        select: 'firstname lastname'
+                    }
+                })
                 .exec((err , result) => {
                 if(!err){
                     res.json(result);
