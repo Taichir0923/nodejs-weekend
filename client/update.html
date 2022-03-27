@@ -21,7 +21,11 @@
         const lastname = document.querySelector('#lastname');
         const number = document.querySelector('#number');
         async function init(){
-            const {data} = await axios.get('http://localhost:3000/get-single-user/' + localStorage.userId);
+            const {data} = await axios.get('http://localhost:3000/get-single-user/' + localStorage.userId , {
+                headers: {
+                    authorization: "Bearer " + localStorage.token
+                }
+            });
             if(data){
                 firstname.value = data.firstname;
                 lastname.value = data.lastname;

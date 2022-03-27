@@ -96,12 +96,13 @@ class UserController {
                         }
 
                         const token = jwt.sign({
-                            userId: user._id
+                            userId: user._id,
                         } , "user-secret" , {
                             expiresIn: '1h'
                         })
                         res.json({
-                            token: token
+                            token: token,
+                            id: user._id
                         });
                     })
             })

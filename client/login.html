@@ -8,5 +8,25 @@
 </head>
 <body>
     
+    <script>
+        const formData = {
+            email: "narada@mail.com",
+            password: '123'
+        }
+        fetch('http://localhost:3000/login' , {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(result => {
+            if(result.token){
+                localStorage.setItem('token' , result.token);
+                localStorage.setItem('userId' , result.id)
+            }
+        })
+    </script>
 </body>
 </html>

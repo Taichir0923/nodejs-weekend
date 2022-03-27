@@ -3,10 +3,13 @@ const jwt = require('jsonwebtoken');
 class IsAuth {
     async checkAthentication(req , res , next){
         const {authorization} = req.headers;
-        const token = authorization.split(' ')[1];
+        // if(authorization && authorization.startsWith("Bearer")){
+
+        // }
+        const token = authorization.split(' ')[1]; // "Bearer token"
         try {
             const result = jwt.verify(token , 'user-secret');
-            const user = await User.findById(result.userId)
+            const user = await User.findById(result.userId);
             if(user){
                 req.user = user;
                 next();
