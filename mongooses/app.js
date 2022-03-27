@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/restapi" , () => {
     app.listen(3000 , () => {
         console.log('server started at port 3000')
     });
-})
+});
 
 
 // MVC - Model View Controller
