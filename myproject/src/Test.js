@@ -1,5 +1,5 @@
 const Component = (props) => {
-    return <h1 style={{color: props.color}}>{props.content}</h1>
+    return <h1 className="text" style={{color: props.color}}>{props.content}</h1>
 }
 
 export default Component
