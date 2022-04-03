@@ -23,3 +23,4 @@ class IsAuth {
 }
 
 module.exports = new IsAuth();
+// 
